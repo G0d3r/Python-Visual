@@ -22,12 +22,26 @@ data = [{
     'type': 'bar',
     'x': repo_names,
     'y': stars,
+    'marker': {
+        'color': 'rgb(150, 150, 150)',
+        'line': {'width': 2, 'color': 'rgb(25, 25, 25)'}
+    },
+    'opacity': 0.6,
 }]
 
 my_layout = {
     'title': 'Oznaczone największą liczbą gwiazdek projekty Pythona w serwisie GitHub',
-    'xaxis': {'title': 'Repozytorium'},
-    'yaxis': {'title': 'Gwiazdki'}
+    'titlefont': {'size': 28},
+    'xaxis': {
+        'title': 'Repozytorium',
+        'titlefont': {'size': 24},
+        'tickfont': {'size': 14}
+        },
+    'yaxis': {
+        'title': 'Gwiazdki',
+        'titlefont': {'size': 24},
+        'tickfont': {'size': 14},
+    }
 }
 
 fig = {'data': data, 'layout': my_layout}
