@@ -12,16 +12,22 @@ print(f"Kod stanu: {r.status_code}")
 # Umieszczenie odpowiedzi API w zmiennej.
 response_dict = r.json()
 repo_dicts = response_dict['items']
-repo_names, stars = [], []
+repo_names, stars, labels = [], [], []
 for repo_dict in repo_dicts:
     repo_names.append(repo_dict['name'])
     stars.append(repo_dict['stargazers_count'])
+
+    owner = repo_dict['owner']['login']
+    description = repo_dict['description']
+    label = f"{owner}<br />{description}"
+    labels.append(label)
 
 # Utworzenie wizualizacji
 data = [{
     'type': 'bar',
     'x': repo_names,
     'y': stars,
+    'hovertext': labels,
     'marker': {
         'color': 'rgb(150, 150, 150)',
         'line': {'width': 2, 'color': 'rgb(25, 25, 25)'}
